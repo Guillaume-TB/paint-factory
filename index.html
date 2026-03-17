@@ -45,14 +45,17 @@
   .cursor.big { width: 44px; height: 44px; background: var(--cyan); }
 
   /* NAV */
+  body > nav + div { margin-top: 62px; }
+
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.3rem 3rem;
-    background: linear-gradient(to bottom, rgba(6,6,15,.96) 0%, transparent 100%);
+    background: rgba(6,6,15,.97);
+    border-bottom: 1px solid rgba(232,25,139,.12);
     transition: background .3s;
   }
-  nav.scrolled { background: rgba(6,6,15,.93); backdrop-filter: blur(18px); }
+  nav.scrolled { backdrop-filter: blur(18px); }
 
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif;
@@ -123,7 +126,7 @@
 
   .hero-content {
     position: relative; z-index: 2;
-    padding: 9rem 3rem 5rem 6rem;
+    padding: 6rem 3rem 5rem 6rem;
     opacity: 0; animation: fadeUp .9s .2s forwards;
   }
   .hero-tag {
@@ -135,7 +138,7 @@
 
   .hero-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4.5rem, 9.5vw, 9rem);
+    font-size: clamp(3.5rem, 7.5vw, 7.5rem);
     line-height: .9; letter-spacing: .02em;
   }
   .hero-title .line-1 { color: var(--white); display: block; }
@@ -223,9 +226,11 @@
   .hero-badge-inner small { font-family: 'DM Sans', sans-serif; font-size: .52rem; letter-spacing: .1em; font-weight: 400; display: block; }
 
   .hero-stats {
-    position: absolute; bottom: 3rem; left: 6rem;
-    display: flex; gap: 3.5rem; z-index: 2;
+    display: flex; gap: 3rem; z-index: 2;
     opacity: 0; animation: fadeUp .9s 1s forwards;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245,243,255,.08);
   }
   .stat-num {
     font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; line-height: 1;
@@ -617,8 +622,8 @@
     <div class="hero-tag">Vivez plus qu'une activité</div>
     <h1 class="hero-title">
       <span class="line-1">Vivez</span>
-      <span class="line-2">L'Expé-</span>
-      <span class="line-3">rience</span>
+      <span class="line-2">L'Expérience</span>
+      <span class="line-3">Woods</span>
     </h1>
     <p class="hero-sub">
       4 terrains à thème au cœur des bois, à quelques minutes de Mâcon.
@@ -627,6 +632,11 @@
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Réserver maintenant</a>
       <a href="#activities" class="btn-ghost"><span>→</span> Découvrir les activités</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Terrains à thème</div></div>
+      <div class="stat-item"><div class="stat-num">400+</div><div class="stat-label">Groupes par an</div></div>
+      <div class="stat-item"><div class="stat-num">Dès 6</div><div class="stat-label">Ans accessible</div></div>
     </div>
   </div>
 
@@ -646,12 +656,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="hero-stats">
-    <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Terrains à thème</div></div>
-    <div class="stat-item"><div class="stat-num">400+</div><div class="stat-label">Groupes par an</div></div>
-    <div class="stat-item"><div class="stat-num">Dès 6</div><div class="stat-label">Ans accessible</div></div>
   </div>
 </section>
 
@@ -714,6 +718,7 @@
         <li class="occasion-item reveal reveal-delay-3"><span class="occasion-num">03</span><span class="occasion-text">Anniversaires & fêtes privées</span><span class="occasion-icon">🎂</span></li>
         <li class="occasion-item reveal reveal-delay-4"><span class="occasion-num">04</span><span class="occasion-text">Sorties scolaires & groupes</span><span class="occasion-icon">🎒</span></li>
         <li class="occasion-item reveal"><span class="occasion-num">05</span><span class="occasion-text">Événements privés & professionnels</span><span class="occasion-icon">⭐</span></li>
+        <li class="occasion-item reveal reveal-delay-1"><span class="occasion-num">06</span><span class="occasion-text">Groupes d'amis & sorties entre potes</span><span class="occasion-icon">🎉</span></li>
       </ul>
     </div>
     <div class="occasions-visual reveal reveal-delay-2">

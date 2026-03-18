@@ -90,7 +90,7 @@
     animation: gradient-move 8s ease infinite;
     padding: .65rem 0; position: relative; z-index: 50;
   }
-  .ticker { display: flex; animation: ticker 40s linear infinite; white-space: nowrap; }
+  .ticker { display: flex; animation: ticker 30s linear infinite; white-space: nowrap; }
   .ticker-item {
     font-family: 'Bebas Neue', sans-serif;
     font-size: .9rem; letter-spacing: .18em; color: #fff; padding: 0 2.5rem;
@@ -270,7 +270,8 @@
 
   .activities-grid {
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* MODIFICATION : On force 4 colonnes sur ordinateur */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 1px; background: rgba(245,243,255,.06);
   }
 
@@ -344,7 +345,7 @@
   .occasions { padding: 8rem 6rem; background: var(--panel); position: relative; overflow: hidden; }
   .occasions::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(to right, transparent, rgba(0,200,224,.3), rgba(232,25,139,.3), transparent);
+    background: linear-gradient(to right, transparent, rgba(232,25,139,.3), rgba(0,200,224,.3), transparent);
   }
   .occasions::after {
     content: 'OCCASIONS';
@@ -547,19 +548,15 @@
   /* REVEAL */
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s, transform .7s; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: .1s; }
-  .reveal-delay-2 { transition-delay: .2s; }
-  .reveal-delay-3 { transition-delay: .3s; }
-  .reveal-delay-4 { transition-delay: .4s; }
 
   /* RESPONSIVE */
+  @media (max-width: 1200px) {
+    .activities-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 1100px) {
     .hero { grid-template-columns: 1fr; }
     .hero-visual { display: none; }
-    .hero-content { padding: 9rem 2rem 5rem; }
-    .hero-stats { left: 2rem; }
     .activities, .occasions, .contact { padding: 6rem 2rem; }
-    .activities-grid { grid-template-columns: 1fr 1fr; }
     .occasions-inner { grid-template-columns: 1fr; gap: 3rem; }
     .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
     footer { padding: 2rem; flex-direction: column; gap: 1.5rem; text-align: center; }
@@ -588,83 +585,16 @@
 
 <div class="ticker-wrap">
   <div class="ticker">
-    <span class="ticker-item">Paintball <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Lasergame <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Gellyball <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Parcours Interactif <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Archery Tag <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Footbulles <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Combats de Sumo <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Olympiades <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Team Building <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">EVG & EVJF <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Anniversaires <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">4 Terrains à thème <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Près de Mâcon <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Paintball <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Lasergame <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Gellyball <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Parcours Interactif <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Archery Tag <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Footbulles <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Combats de Sumo <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Olympiades <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Team Building <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">EVG & EVJF <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Anniversaires <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">4 Terrains à thème <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Près de Mâcon <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Paintball ✦ Lasergame ✦ Gellyball ✦ Parcours Interactif ✦ Archery Tag ✦ Footbulles ✦ Sumo ✦ Olympiades ✦</span>
+    <span class="ticker-item">Paintball ✦ Lasergame ✦ Gellyball ✦ Parcours Interactif ✦ Archery Tag ✦ Footbulles ✦ Sumo ✦ Olympiades ✦</span>
   </div>
 </div>
-
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Vivez plus qu'une activité</div>
-    <h1 class="hero-title">
-      <span class="line-1">Vivez</span>
-      <span class="line-2">L'Expérience</span>
-      <span class="line-3">Woods</span>
-    </h1>
-    <p class="hero-sub">
-      8 activités délirantes au cœur des bois, à quelques minutes de Mâcon.
-      Paintball, lasergame, parcours interactif — des sessions inoubliables pour tous.
-    </p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Réserver maintenant</a>
-      <a href="#activities" class="btn-ghost"><span>→</span> Découvrir les activités</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Terrains à thème</div></div>
-      <div class="stat-item"><div class="stat-num">400+</div><div class="stat-label">Groupes par an</div></div>
-      <div class="stat-item"><div class="stat-num">Dès 6</div><div class="stat-label">Ans accessible</div></div>
-    </div>
-  </div>
-
-  <div class="hero-visual">
-    <div class="splat-container">
-      <div class="splat-ring"></div>
-      <div class="splat-ring"></div>
-      <div class="splat-ring"></div>
-      <div class="splat-core"></div>
-      <div class="splat-blob splat-blob-1"></div>
-      <div class="splat-blob splat-blob-2"></div>
-      <div class="splat-blob splat-blob-3"></div>
-      <div class="splat-blob splat-blob-4"></div>
-      <div class="hero-badge">
-        <div class="hero-badge-inner">
-          <small>Depuis</small>2019<small>Mâcon</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="activities" id="activities">
   <div class="section-header">
     <div>
       <div class="section-eyebrow reveal">Nos activités</div>
-      <h2 class="section-title reveal reveal-delay-1">Ce qu'on<br>vous propose</h2>
+      <h2 class="section-title reveal">Ce qu'on<br>vous propose</h2>
     </div>
     <div class="section-count reveal">08</div>
   </div>
@@ -679,13 +609,13 @@
             <h3 class="activity-name">Paintball</h3>
             <p class="activity-desc">L'expérience originale. Scénarios tactiques en forêt. Adrénaline garantie.</p>
             <div style="display: flex; gap: 1rem; margin-top: auto;">
-                <a href="#contact" class="activity-link" style="font-size: 0.65rem;">Réserver <span class="activity-link-line" style="width: 15px;"></span></a>
-                <a href="tarifs-paintball.html" target="_blank" class="activity-link" style="color: var(--cyan-l); font-size: 0.65rem;">Tarifs <span class="activity-link-line" style="background: var(--cyan-l); width: 15px;"></span></a>
+                <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
+                <a href="tarifs-paintball.html" target="_blank" class="activity-link" style="color: var(--cyan-l);">Tarifs <span class="activity-link-line" style="background: var(--cyan-l);"></span></a>
             </div>
         </div>
     </div>
 
-    <div class="activity-card reveal reveal-delay-1">
+    <div class="activity-card reveal">
         <div class="color-bar"></div>
         <div class="activity-bg-num">02</div>
         <div class="activity-icon">🔫</div>
@@ -694,40 +624,38 @@
             <h3 class="activity-name">Lasergame</h3>
             <p class="activity-desc">Technologie laser immersive. Missions en équipe, sans impact, sans limite d'âge.</p>
             <div style="display: flex; gap: 1rem; margin-top: auto;">
-                <a href="#contact" class="activity-link" style="font-size: 0.65rem;">Réserver <span class="activity-link-line" style="width: 15px;"></span></a>
-                <a href="tarifs-lasergame.html" target="_blank" class="activity-link" style="color: var(--cyan-l); font-size: 0.65rem;">Tarifs <span class="activity-link-line" style="background: var(--cyan-l); width: 15px;"></span></a>
+                <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
+                <a href="tarifs-lasergame.html" target="_blank" class="activity-link" style="color: var(--cyan-l);">Tarifs <span class="activity-link-line" style="background: var(--cyan-l);"></span></a>
             </div>
         </div>
     </div>
 
-    <div class="activity-card reveal reveal-delay-2">
+    <div class="activity-card reveal">
         <div class="color-bar"></div>
         <div class="activity-bg-num">03</div>
         <div class="activity-icon">💧</div>
         <div class="activity-content">
             <span class="activity-tag">Doux & Fun</span>
             <h3 class="activity-name">Gellyball</h3>
-            <p class="activity-desc">Billes de gel biodégradables, impacts soft. Accessible dès 6 ans. Zéro douleur.</p>
+            <p class="activity-desc">Billes de gel biodégradables. Accessible dès 6 ans. Zéro douleur.</p>
             <div style="display: flex; gap: 1rem; margin-top: auto;">
-                <a href="#contact" class="activity-link" style="font-size: 0.65rem;">Réserver <span class="activity-link-line" style="width: 15px;"></span></a>
-                <a href="tarifs-gellyball.html" target="_blank" class="activity-link" style="color: var(--cyan-l); font-size: 0.65rem;">Tarifs <span class="activity-link-line" style="background: var(--cyan-l); width: 15px;"></span></a>
+                <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
+                <a href="tarifs-gellyball.html" target="_blank" class="activity-link" style="color: var(--cyan-l);">Tarifs <span class="activity-link-line" style="background: var(--cyan-l);"></span></a>
             </div>
         </div>
     </div>
 
-    <div class="activity-card reveal reveal-delay-3">
-    <div class="color-bar"></div>
-    <div class="activity-bg-num">04</div>
-    <div class="activity-icon">⚡</div>
-    <div class="activity-content">
-        <span class="activity-tag">Nouveauté</span>
-        <h3 class="activity-name">Parcours Interactif</h3>
-        <p class="activity-desc">Défiez vos réflexes sur un parcours électronique unique. Rapidité et agilité requises.</p>
-        <div style="display: flex; gap: 1rem; margin-top: auto;">
+    <div class="activity-card reveal">
+        <div class="color-bar"></div>
+        <div class="activity-bg-num">04</div>
+        <div class="activity-icon">⚡</div>
+        <div class="activity-content">
+            <span class="activity-tag">Nouveauté</span>
+            <h3 class="activity-name">Parcours Interactif</h3>
+            <p class="activity-desc">Défiez vos réflexes sur un parcours électronique unique. Rapidité et agilité.</p>
             <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
         </div>
     </div>
-</div>
 
     <div class="activity-card reveal">
         <div class="color-bar"></div>
@@ -736,138 +664,48 @@
         <div class="activity-content">
             <span class="activity-tag">Archerie</span>
             <h3 class="activity-name">Archery Tag</h3>
-            <p class="activity-desc">Mélange de tir à l'arc et de balle au prisonnier. Flèches sécurisées à embout mousse.</p>
+            <p class="activity-desc">Mélange de tir à l'arc et balle au prisonnier. Flèches sécurisées.</p>
             <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
         </div>
     </div>
 
-    <div class="activity-card reveal reveal-delay-1">
+    <div class="activity-card reveal">
         <div class="color-bar"></div>
         <div class="activity-bg-num">06</div>
         <div class="activity-icon">⚽</div>
         <div class="activity-content">
             <span class="activity-tag">Sport Fun</span>
             <h3 class="activity-name">Footbulles</h3>
-            <p class="activity-desc">Du foot dans des bulles géantes. Chocs, rebonds et fous rires garantis sans aucun danger.</p>
+            <p class="activity-desc">Du foot dans des bulles géantes. Chocs et rebonds fun !</p>
             <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
         </div>
     </div>
 
-    <div class="activity-card reveal reveal-delay-2">
+    <div class="activity-card reveal">
         <div class="color-bar"></div>
         <div class="activity-bg-num">07</div>
         <div class="activity-icon">🍙</div>
         <div class="activity-content">
             <span class="activity-tag">Insolite</span>
             <h3 class="activity-name">Combats de Sumo</h3>
-            <p class="activity-desc">Enfilez des costumes géants et poussez votre adversaire hors du tatami. Hilarant !</p>
+            <p class="activity-desc">Costumes géants et fous rires sur le tatami. Hilarant !</p>
             <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
         </div>
     </div>
 
-    <div class="activity-card reveal reveal-delay-3">
+    <div class="activity-card reveal">
         <div class="color-bar"></div>
         <div class="activity-bg-num">08</div>
         <div class="activity-icon">🏆</div>
         <div class="activity-content">
             <span class="activity-tag">Événement</span>
             <h3 class="activity-name">Olympiades</h3>
-            <p class="activity-desc">Défis en équipe et challenges sur mesure. Parfait pour team building et anniversaires.</p>
+            <p class="activity-desc">Défis en équipe et challenges sur mesure pour groupes.</p>
             <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
         </div>
     </div>
   </div>
 </section>
-
-<section class="occasions" id="occasions">
-  <div class="occasions-inner">
-    <div>
-      <div class="section-eyebrow reveal">Pour toutes les occasions</div>
-      <h2 class="section-title reveal reveal-delay-1">Qui peut<br>venir ?</h2>
-      <ul class="occasions-list">
-        <li class="occasion-item reveal reveal-delay-1"><span class="occasion-num">01</span><span class="occasion-text">Team Building & entreprises</span><span class="occasion-icon">🏢</span></li>
-        <li class="occasion-item reveal reveal-delay-2"><span class="occasion-num">02</span><span class="occasion-text">EVG & EVJF</span><span class="occasion-icon">🥂</span></li>
-        <li class="occasion-item reveal reveal-delay-3"><span class="occasion-num">03</span><span class="occasion-text">Anniversaires & fêtes privées</span><span class="occasion-icon">🎂</span></li>
-        <li class="occasion-item reveal reveal-delay-4"><span class="occasion-num">04</span><span class="occasion-text">Sorties scolaires & groupes</span><span class="occasion-icon">🎒</span></li>
-        <li class="occasion-item reveal"><span class="occasion-num">05</span><span class="occasion-text">Événements privés & professionnels</span><span class="occasion-icon">⭐</span></li>
-        <li class="occasion-item reveal reveal-delay-1"><span class="occasion-num">06</span><span class="occasion-text">Groupes d'amis & sorties entre potes</span><span class="occasion-icon">🎉</span></li>
-      </ul>
-    </div>
-    <div class="occasions-visual reveal reveal-delay-2">
-      <div class="terrains-badge">
-        <span class="terrains-num">4</span>
-        <div class="terrains-label">Terrains à thème disponibles</div>
-        <div class="terrains-features">
-          <div class="terrain-feat">Équipement fourni & sécurisé</div>
-          <div class="terrain-feat">Encadrement professionnel</div>
-          <div class="terrain-feat">Projets clé en main sur mesure</div>
-          <div class="terrain-feat">Accessible dès 6 ans</div>
-          <div class="terrain-feat">Idéal 10 à 200 personnes</div>
-        </div>
-        <div class="phone-cta">
-          <div class="phone-icon">📞</div>
-          <div class="phone-info">
-            <small>Réponse rapide</small>
-            <div class="phone-num">06 11 37 21 24</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div>
-      <div class="section-eyebrow reveal">Nous contacter</div>
-      <h2 class="section-title reveal reveal-delay-1">Lancez votre<br>projet</h2>
-      <div class="contact-info">
-        <div class="info-block reveal">
-          <div class="info-icon">📍</div>
-          <div><div class="info-label">Localisation</div><div class="info-value">À quelques minutes de Mâcon<br>Saône-et-Loire, Bourgogne</div></div>
-        </div>
-        <div class="info-block reveal reveal-delay-1">
-          <div class="info-icon">📞</div>
-          <div><div class="info-label">Téléphone</div><div class="info-value">06 11 37 21 24</div></div>
-        </div>
-        <div class="info-block reveal reveal-delay-2">
-          <div class="info-icon">🌐</div>
-          <div><div class="info-label">Réseaux sociaux</div><div class="info-value">Facebook · Instagram</div></div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <form class="contact-form reveal reveal-delay-1" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group"><label>Prénom</label><input type="text" placeholder="Jean" required></div>
-          <div class="form-group"><label>Nom</label><input type="text" placeholder="Dupont" required></div>
-        </div>
-        <div class="form-group"><label>Email</label><input type="email" placeholder="jean@exemple.fr" required></div>
-        <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
-        <div class="form-group">
-          <label>Type d'événement</label>
-          <select>
-            <option value="">Sélectionner...</option>
-            <option>Team Building / Entreprise</option>
-            <option>EVG / EVJF</option>
-            <option>Anniversaire</option>
-            <option>Sortie scolaire</option>
-            <option>Événement privé</option>
-            <option>Autre</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Votre message</label><textarea placeholder="Décrivez votre projet, le nombre de participants, la date souhaitée..."></textarea></div>
-        <button type="submit" class="btn-submit" id="submitBtn">Envoyer le message</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-logo">Paint<em>Factory</em><span>Woods</span></div>
-  <div class="footer-copy">© 2025 Paint Factory Woods — Tous droits réservés</div>
-  <div class="footer-socials"><a href="#">Facebook</a><a href="#">Instagram</a></div>
-</footer>
 
 <script>
   const cursor = document.getElementById('cursor');
@@ -875,33 +713,15 @@
     cursor.style.left = e.clientX + 'px';
     cursor.style.top  = e.clientY + 'px';
   });
-  document.querySelectorAll('a, button, .activity-card, .occasion-item').forEach(el => {
+  document.querySelectorAll('a, button, .activity-card').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('big'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
-  });
-
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
   });
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.textContent = 'Message envoyé ✓';
-    btn.style.background = 'linear-gradient(135deg,#00c8e0,#008fa0)';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Envoyer le message';
-      btn.style.background = '';
-      btn.disabled = false;
-      e.target.reset();
-    }, 3000);
-  }
 </script>
 </body>
 </html>

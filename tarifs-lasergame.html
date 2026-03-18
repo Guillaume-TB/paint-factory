@@ -14,7 +14,6 @@
     --pink-d: #a0105f;
     --cyan:   #00c8e0;
     --cyan-l: #4de4f5;
-    --cyan-d: #008fa0;
     --white:  #f5f3ff;
     --grey:   rgba(245,243,255,.55);
   }
@@ -40,41 +39,41 @@
   }
   .cursor.big { width: 44px; height: 44px; }
 
-  /* NAV & TICKER */
+  /* NAV (Exactement comme l'accueil) */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.3rem 3rem;
     background: rgba(6,6,15,.97);
     border-bottom: 1px solid rgba(0,200,224,.12);
+    backdrop-filter: blur(18px);
   }
 
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.55rem; color: var(--pink); text-decoration: none;
+    font-size: 1.55rem; letter-spacing: .08em;
+    color: var(--pink); text-decoration: none; line-height: 1;
   }
   .nav-logo em { color: var(--cyan); font-style: normal; }
+  .nav-logo span { color: rgba(245,243,255,.4); }
 
-  /* TICKER (Le bandeau) */
-  .ticker-wrap {
-    margin-top: 62px; /* Pour le mettre sous la nav */
-    overflow: hidden;
-    background: linear-gradient(90deg, var(--pink-d), var(--pink), var(--cyan-d), var(--cyan), var(--pink-d));
-    background-size: 300% 100%;
-    animation: gradient-move 8s ease infinite;
-    padding: .65rem 0; position: relative; z-index: 50;
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a {
+    color: var(--white); text-decoration: none;
+    font-size: .78rem; letter-spacing: .15em; text-transform: uppercase;
+    opacity: .6; transition: opacity .2s, color .2s;
   }
-  .ticker { display: flex; animation: ticker 30s linear infinite; white-space: nowrap; }
-  .ticker-item {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: .9rem; letter-spacing: .18em; color: #fff; padding: 0 2.5rem;
-  }
+  .nav-links a:hover { opacity: 1; color: var(--cyan); }
 
-  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-  @keyframes gradient-move { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--pink), var(--pink-d));
+    color: #fff !important; opacity: 1 !important;
+    padding: .5rem 1.5rem; border-radius: 3px; font-weight: 500 !important;
+    box-shadow: 0 0 20px rgba(232,25,139,.35);
+  }
 
   /* CONTENT */
-  .pricing-page { padding: 6rem 6rem 8rem; min-height: 100vh; }
+  .pricing-page { padding: 12rem 6rem 8rem; min-height: 100vh; }
   .section-header { margin-bottom: 4rem; text-align: center; }
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
@@ -124,8 +123,9 @@
   .footer-copy { font-size: .7rem; color: rgba(245,243,255,.28); }
 
   @media (max-width: 1100px) {
-    .pricing-page { padding: 4rem 2rem 5rem; }
+    .pricing-page { padding: 9rem 2rem 5rem; }
     nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
   }
 </style>
 </head>
@@ -133,24 +133,15 @@
 
 <div class="cursor" id="cursor"></div>
 
-<nav>
+<nav id="nav">
   <a href="index.html" class="nav-logo">Paint<em>Factory</em><span>Woods</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#activities">Activités</a></li>
+    <li><a href="index.html#occasions">Pour qui ?</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Réserver</a></li>
+  </ul>
 </nav>
-
-<div class="ticker-wrap">
-  <div class="ticker">
-    <span class="ticker-item">Lasergame Immersif ✦</span>
-    <span class="ticker-item">Matériel Pro ✦</span>
-    <span class="ticker-item">Dès 6 ans ✦</span>
-    <span class="ticker-item">Sans douleur ✦</span>
-    <span class="ticker-item">En forêt ✦</span>
-    <span class="ticker-item">Lasergame Immersif ✦</span>
-    <span class="ticker-item">Matériel Pro ✦</span>
-    <span class="ticker-item">Dès 6 ans ✦</span>
-    <span class="ticker-item">Sans douleur ✦</span>
-    <span class="ticker-item">En forêt ✦</span>
-  </div>
-</div>
 
 <section class="pricing-page">
   <div class="pricing-container">

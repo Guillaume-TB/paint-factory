@@ -66,4 +66,125 @@
 
   .nav-cta {
     background: linear-gradient(135deg, var(--pink), var(--pink-d));
-    color
+    color: #fff !important; opacity: 1 !important;
+    padding: .5rem 1.5rem; border-radius: 3px; font-weight: 500 !important;
+    box-shadow: 0 0 20px rgba(232,25,139,.35);
+  }
+
+  /* CONTENT */
+  .pricing-page { padding: 12rem 6rem 8rem; min-height: 100vh; }
+  .section-header { margin-bottom: 4rem; text-align: center; }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 7.5vw, 6rem);
+    line-height: .9;
+  }
+  .section-title span { color: var(--pink); }
+
+  .pricing-container { max-width: 900px; margin: 0 auto; }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; margin-top: 4rem;
+  }
+
+  .price-card {
+    background: var(--panel); padding: 3rem 2rem;
+    border-radius: 4px; border: 1px solid rgba(245,243,255,.05);
+    position: relative; transition: transform 0.3s;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .price-card:hover { transform: translateY(-10px); border-color: var(--pink); }
+
+  .price-card.featured { border: 2px solid var(--pink); box-shadow: 0 0 30px rgba(232,25,139,.2); }
+  .promo-tag {
+    position: absolute; top: 12px; right: -35px;
+    background: var(--pink); color: #fff;
+    font-family: 'Bebas Neue', sans-serif; font-size: .8rem;
+    padding: 5px 40px; transform: rotate(45deg); font-weight: bold;
+  }
+
+  .card-label { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--grey); }
+  .card-time { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; margin-top: 0.5rem; }
+  .card-amount { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; color: #fff; margin: 1rem 0; line-height: 1; }
+  .card-amount span { font-size: 2rem; color: var(--pink); }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: .8rem;
+    margin-top: 4rem; color: var(--cyan); text-decoration: none;
+    font-size: .75rem; letter-spacing: .15em; text-transform: uppercase;
+  }
+
+  footer {
+    background: #040408; border-top: 1px solid rgba(232,25,139,.12);
+    padding: 2.5rem 6rem; text-align: center;
+  }
+  .footer-copy { font-size: .7rem; color: rgba(245,243,255,.28); }
+
+  @media (max-width: 1100px) {
+    .pricing-page { padding: 9rem 2rem 5rem; }
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Paint<em>Factory</em><span>Woods</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#activities">Activités</a></li>
+    <li><a href="index.html#occasions">Pour qui ?</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Réserver</a></li>
+  </ul>
+</nav>
+
+<section class="pricing-page">
+  <div class="pricing-container">
+    <div class="section-header">
+      <h1 class="section-title">Tarifs <span>Gellyball</span></h1>
+      <p style="color: var(--grey); margin-top: 1rem;">Dès 6 ans — Le fun sans la douleur.</p>
+    </div>
+
+    <div class="grid">
+      <div class="price-card">
+        <span class="card-label">Session Rapide</span>
+        <span class="card-time">30 Minutes</span>
+        <div class="card-amount">10<span>€</span></div>
+        <p style="font-size: .8rem; color: var(--grey); text-align: center;">Parfait pour une découverte fun.</p>
+      </div>
+
+      <div class="price-card featured">
+        <div class="promo-tag">Best-Seller</div>
+        <span class="card-label">Session Illimitée</span>
+        <span class="card-time">1 Heure</span>
+        <div class="card-amount">15<span>€</span></div>
+        <p style="font-size: .8rem; color: var(--grey); text-align: center;">Le choix idéal pour les anniversaires.</p>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2025 Paint Factory Woods — Tous droits réservés</div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, .price-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+  });
+</script>
+
+</body>
+</html>

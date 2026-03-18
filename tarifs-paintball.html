@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarifs Paintball — Paint Factory Woods</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:   #06060f;
+    --panel:  #0e0d1c;
+    --pink:   #e8198b;
+    --pink-l: #ff4daf;
+    --pink-d: #a0105f;
+    --cyan:   #00c8e0;
+    --cyan-l: #4de4f5;
+    --cyan-d: #008fa0;
+    --white:  #f5f3ff;
+    --grey:   rgba(245,243,255,.55);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CURSOR */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--pink);
+    border-radius: 50%;
+    position: fixed; pointer-events: none; z-index: 9999;
+    transform: translate(-50%,-50%);
+    transition: width .2s, height .2s, background .2s;
+    mix-blend-mode: exclusion;
+  }
+  .cursor.big { width: 44px; height: 44px; background: var(--cyan); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.3rem 3rem;
+    background: rgba(6,6,15,.97);
+    border-bottom: 1px solid rgba(232,25,139,.12);
+    transition: background .3s;
+  }
+  nav.scrolled { backdrop-filter: blur(18px); }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.55rem; letter-spacing: .08em;
+    color: var(--pink); text-decoration: none; line-height: 1;
+  }
+  .nav-logo em { color: var(--cyan); font-style: normal; }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--white); text-decoration: none;
+    font-size: .78rem; letter-spacing: .15em; text-transform: uppercase;
+    opacity: .6; transition: opacity .2s, color .2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--cyan); }
+
+  /* TARIFS CONTENT */
+  .pricing-page { padding: 12rem 6rem 8rem; position: relative; min-height: 100vh; }
+  
+  .section-header { margin-bottom: 4rem; text-align: center; }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 7.5vw, 6rem);
+    line-height: .9; color: var(--white);
+  }
+  .section-title span { color: var(--pink); }
+
+  .pricing-container {
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .category-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem; color: var(--cyan);
+    margin: 3rem 0 1.5rem; display: flex; align-items: center; gap: 1rem;
+  }
+  .category-title::after { content: ''; flex: 1; height: 1px; background: rgba(0,200,224,.2); }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .price-card {
+    background: var(--panel); padding: 3rem 2rem;
+    border-radius: 4px; border: 1px solid rgba(245,243,255,.05);
+    position: relative; overflow: hidden; transition: transform .3s;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .price-card:hover { transform: translateY(-10px); border-color: var(--pink); }
+
+  .price-card.featured { border: 2px solid var(--pink); box-shadow: 0 0 30px rgba(232,25,139,.2); }
+  .promo-tag {
+    position: absolute; top: 12px; right: -35px;
+    background: var(--pink); color: #fff;
+    font-family: 'Bebas Neue', sans-serif; font-size: .8rem;
+    padding: 5px 40px; transform: rotate(45deg);
+  }
+
+  .card-label { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--grey); margin-bottom: .5rem; }
+  .card-billes { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; line-height: 1; }
+  .card-amount { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; color: #fff; margin: 1rem 0; line-height: 1; }
+  .card-amount span { font-size: 2rem; color: var(--pink); }
+  .card-desc { font-size: .8rem; color: var(--grey); text-align: center; }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: .8rem;
+    margin-top: 4rem; color: var(--cyan); text-decoration: none;
+    font-size: .75rem; letter-spacing: .15em; text-transform: uppercase;
+  }
+
+  /* FOOTER (Identique) */
+  footer {
+    background: #040408; border-top: 1px solid rgba(232,25,139,.12);
+    padding: 2.5rem 6rem; display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.35rem; color: var(--pink); }
+  .footer-copy { font-size: .7rem; color: rgba(245,243,255,.28); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .pricing-page { padding: 9rem 2rem 5rem; }
+    footer { padding: 2rem; flex-direction: column; gap: 1.5rem; }
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Paint<em>Factory</em><span>Woods</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#activities">Activités</a></li>
+    <li><a href="index.html#occasions">Pour qui ?</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" style="background: var(--pink); padding: .5rem 1.5rem; border-radius:3px; color:#fff; opacity:1">Réserver</a></li>
+  </ul>
+</nav>
+
+<section class="pricing-page">
+  <div class="pricing-container">
+    <div class="section-header">
+      <h1 class="section-title">Tarifs <span>Paintball</span></h1>
+      <p style="color: var(--grey); margin-top: 1rem;">L'équipement complet est inclus dans chaque forfait.</p>
+    </div>
+
+    <h2 class="category-title">Paintball Adulte (Dès 12 ans)</h2>
+    <div class="grid">
+      <div class="price-card">
+        <span class="card-label">Découverte</span>
+        <span class="card-billes">100 Billes</span>
+        <div class="card-amount">25<span>€</span></div>
+        <p class="card-desc">Idéal pour une initiation rapide et intense.</p>
+      </div>
+      <div class="price-card">
+        <span class="card-label">Standard</span>
+        <span class="card-billes">200 Billes</span>
+        <div class="card-amount">30<span>€</span></div>
+        <p class="card-desc">Le choix équilibré pour s'amuser davantage.</p>
+      </div>
+      <div class="price-card featured">
+        <div class="promo-tag">Best-Seller</div>
+        <span class="card-label">Promo Woods</span>
+        <span class="card-billes">400 Billes</span>
+        <div class="card-amount">35<span>€</span></div>
+        <p class="card-desc">Adrénaline maximale. Doublez vos munitions pour seulement 5€ de plus !</p>
+      </div>
+    </div>
+
+    <h2 class="category-title">Paintball Enfant (7 - 12 ans)</h2>
+    <div class="grid">
+      <div class="price-card">
+        <span class="card-label">Session Chrono</span>
+        <span class="card-billes">1 Heure</span>
+        <div class="card-amount">15<span>€</span></div>
+        <p class="card-desc">Matériel ultra-léger et sécurisé pour les petits héros.</p>
+      </div>
+      <div class="price-card">
+        <span class="card-label">Session Fun</span>
+        <span class="card-billes">2 Heures</span>
+        <div class="card-amount">25<span>€</span></div>
+        <p class="card-desc">Le temps parfait pour fêter un anniversaire entre copains.</p>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Paint<em>Factory</em><span>Woods</span></div>
+  <div class="footer-copy">© 2025 Paint Factory Woods — Tous droits réservés</div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, button, .price-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+</script>
+
+</body>
+</html>

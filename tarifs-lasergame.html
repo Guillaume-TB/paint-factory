@@ -11,8 +11,10 @@
     --dark:   #06060f;
     --panel:  #0e0d1c;
     --pink:   #e8198b;
+    --pink-d: #a0105f;
     --cyan:   #00c8e0;
     --cyan-l: #4de4f5;
+    --cyan-d: #008fa0;
     --white:  #f5f3ff;
     --grey:   rgba(245,243,255,.55);
   }
@@ -38,7 +40,7 @@
   }
   .cursor.big { width: 44px; height: 44px; }
 
-  /* NAV */
+  /* NAV & TICKER */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
@@ -53,8 +55,26 @@
   }
   .nav-logo em { color: var(--cyan); font-style: normal; }
 
+  /* TICKER (Le bandeau) */
+  .ticker-wrap {
+    margin-top: 62px; /* Pour le mettre sous la nav */
+    overflow: hidden;
+    background: linear-gradient(90deg, var(--pink-d), var(--pink), var(--cyan-d), var(--cyan), var(--pink-d));
+    background-size: 300% 100%;
+    animation: gradient-move 8s ease infinite;
+    padding: .65rem 0; position: relative; z-index: 50;
+  }
+  .ticker { display: flex; animation: ticker 30s linear infinite; white-space: nowrap; }
+  .ticker-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: .9rem; letter-spacing: .18em; color: #fff; padding: 0 2.5rem;
+  }
+
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @keyframes gradient-move { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
   /* CONTENT */
-  .pricing-page { padding: 12rem 6rem 8rem; min-height: 100vh; }
+  .pricing-page { padding: 6rem 6rem 8rem; min-height: 100vh; }
   .section-header { margin-bottom: 4rem; text-align: center; }
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
@@ -104,7 +124,7 @@
   .footer-copy { font-size: .7rem; color: rgba(245,243,255,.28); }
 
   @media (max-width: 1100px) {
-    .pricing-page { padding: 9rem 2rem 5rem; }
+    .pricing-page { padding: 4rem 2rem 5rem; }
     nav { padding: 1.2rem 1.5rem; }
   }
 </style>
@@ -117,11 +137,26 @@
   <a href="index.html" class="nav-logo">Paint<em>Factory</em><span>Woods</span></a>
 </nav>
 
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">Lasergame Immersif ✦</span>
+    <span class="ticker-item">Matériel Pro ✦</span>
+    <span class="ticker-item">Dès 6 ans ✦</span>
+    <span class="ticker-item">Sans douleur ✦</span>
+    <span class="ticker-item">En forêt ✦</span>
+    <span class="ticker-item">Lasergame Immersif ✦</span>
+    <span class="ticker-item">Matériel Pro ✦</span>
+    <span class="ticker-item">Dès 6 ans ✦</span>
+    <span class="ticker-item">Sans douleur ✦</span>
+    <span class="ticker-item">En forêt ✦</span>
+  </div>
+</div>
+
 <section class="pricing-page">
   <div class="pricing-container">
     <div class="section-header">
       <h1 class="section-title">Tarifs <span>Lasergame</span></h1>
-      <p style="color: var(--grey); margin-top: 1rem;">Technologie laser immersive en pleine forêt.</p>
+      <p style="color: var(--grey); margin-top: 1rem;">L'aventure laser au cœur des bois.</p>
     </div>
 
     <div class="grid">
@@ -129,22 +164,17 @@
         <span class="card-label">Session Solo</span>
         <span class="card-time">20 Minutes</span>
         <div class="card-amount">8<span>€</span></div>
-        <p style="font-size: .8rem; color: var(--grey);">La dose d'adrénaline rapide.</p>
       </div>
-
       <div class="price-card">
         <span class="card-label">Double Session</span>
         <span class="card-time">2 x 20 Minutes</span>
         <div class="card-amount">15<span>€</span></div>
-        <p style="font-size: .8rem; color: var(--grey);">Pour parfaire votre stratégie.</p>
       </div>
-
       <div class="price-card featured">
         <div class="promo-tag">Le Top</div>
         <span class="card-label">Full Expérience</span>
         <span class="card-time">3 x 20 Minutes</span>
         <div class="card-amount">20<span>€</span></div>
-        <p style="font-size: .8rem; color: var(--grey);">L'immersion totale au meilleur prix.</p>
       </div>
     </div>
 

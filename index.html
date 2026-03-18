@@ -90,7 +90,7 @@
     animation: gradient-move 8s ease infinite;
     padding: .65rem 0; position: relative; z-index: 50;
   }
-  .ticker { display: flex; animation: ticker 30s linear infinite; white-space: nowrap; }
+  .ticker { display: flex; animation: ticker 40s linear infinite; white-space: nowrap; }
   .ticker-item {
     font-family: 'Bebas Neue', sans-serif;
     font-size: .9rem; letter-spacing: .18em; color: #fff; padding: 0 2.5rem;
@@ -269,14 +269,15 @@
   }
 
   .activities-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1px; background: rgba(245,243,255,.06);
   }
 
   .activity-card {
     background: var(--dark); padding: 2.5rem 2rem;
     position: relative; overflow: hidden; cursor: none;
-    min-height: 350px; display: flex; flex-direction: column; justify-content: flex-end;
+    min-height: 380px; display: flex; flex-direction: column; justify-content: flex-end;
     transition: background .3s;
   }
   .activity-card:hover { background: var(--panel); }
@@ -287,10 +288,8 @@
   }
 
   .color-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 3; }
-  .activity-card:nth-child(1) .color-bar { background: linear-gradient(90deg, var(--pink), var(--pink-l)); }
-  .activity-card:nth-child(2) .color-bar { background: linear-gradient(90deg, var(--cyan), var(--cyan-l)); }
-  .activity-card:nth-child(3) .color-bar { background: linear-gradient(90deg, var(--pink), var(--cyan)); }
-  .activity-card:nth-child(4) .color-bar { background: linear-gradient(90deg, var(--cyan-l), var(--pink-l)); }
+  .activity-card:nth-child(odd) .color-bar { background: linear-gradient(90deg, var(--pink), var(--pink-l)); }
+  .activity-card:nth-child(even) .color-bar { background: linear-gradient(90deg, var(--cyan), var(--cyan-l)); }
 
   .activity-icon {
     position: absolute; top: 2rem; right: 1.8rem;
@@ -306,16 +305,14 @@
     color: rgba(245,243,255,.025); z-index: 0; white-space: nowrap;
   }
 
-  .activity-content { position: relative; z-index: 2; }
+  .activity-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: flex-end;}
 
   .activity-tag {
     display: inline-block; padding: .2rem .75rem;
-    font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; border-radius: 2px; margin-bottom: 1rem;
+    font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; border-radius: 2px; margin-bottom: 1rem; align-self: flex-start;
   }
-  .activity-card:nth-child(1) .activity-tag,
-  .activity-card:nth-child(3) .activity-tag { background: rgba(232,25,139,.15); color: var(--pink-l); border: 1px solid rgba(232,25,139,.25); }
-  .activity-card:nth-child(2) .activity-tag,
-  .activity-card:nth-child(4) .activity-tag { background: rgba(0,200,224,.12); color: var(--cyan-l); border: 1px solid rgba(0,200,224,.2); }
+  .activity-card:nth-child(odd) .activity-tag { background: rgba(232,25,139,.15); color: var(--pink-l); border: 1px solid rgba(232,25,139,.25); }
+  .activity-card:nth-child(even) .activity-tag { background: rgba(0,200,224,.12); color: var(--cyan-l); border: 1px solid rgba(0,200,224,.2); }
 
   .activity-name {
     font-family: 'Bebas Neue', sans-serif;
@@ -328,20 +325,16 @@
     text-decoration: none; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
     font-weight: 500; transition: gap .2s;
   }
-  .activity-card:nth-child(1) .activity-link,
-  .activity-card:nth-child(3) .activity-link { color: var(--pink-l); }
-  .activity-card:nth-child(2) .activity-link,
-  .activity-card:nth-child(4) .activity-link { color: var(--cyan-l); }
+  .activity-card:nth-child(odd) .activity-link { color: var(--pink-l); }
+  .activity-card:nth-child(even) .activity-link { color: var(--cyan-l); }
   .activity-link:hover { gap: 1.1rem; }
 
   .activity-link-line {
     width: 22px; height: 1px; display: inline-block; position: relative; transition: width .2s;
   }
   .activity-link:hover .activity-link-line { width: 32px; }
-  .activity-card:nth-child(1) .activity-link-line,
-  .activity-card:nth-child(3) .activity-link-line { background: var(--pink-l); }
-  .activity-card:nth-child(2) .activity-link-line,
-  .activity-card:nth-child(4) .activity-link-line { background: var(--cyan-l); }
+  .activity-card:nth-child(odd) .activity-link-line { background: var(--pink-l); }
+  .activity-card:nth-child(even) .activity-link-line { background: var(--cyan-l); }
   .activity-link-line::after {
     content: '›'; position: absolute; right: -5px; top: 50%;
     transform: translateY(-50%); font-size: 14px; line-height: 1;
@@ -598,6 +591,9 @@
     <span class="ticker-item">Paintball <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Lasergame <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Gellyball <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Archery Tag <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Footbulles <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Combats de Sumo <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Olympiades <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Team Building <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">EVG & EVJF <span class="ticker-sep">✦</span></span>
@@ -607,6 +603,9 @@
     <span class="ticker-item">Paintball <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Lasergame <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Gellyball <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Archery Tag <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Footbulles <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Combats de Sumo <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Olympiades <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Team Building <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">EVG & EVJF <span class="ticker-sep">✦</span></span>
@@ -626,8 +625,8 @@
       <span class="line-3">Woods</span>
     </h1>
     <p class="hero-sub">
-      4 terrains à thème au cœur des bois, à quelques minutes de Mâcon.
-      Paintball, lasergame, gellyball — des sessions inoubliables pour tous.
+      7 activités délirantes au cœur des bois, à quelques minutes de Mâcon.
+      Paintball, lasergame, combats de sumo — des sessions inoubliables pour tous.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Réserver maintenant</a>
@@ -665,9 +664,10 @@
       <div class="section-eyebrow reveal">Nos activités</div>
       <h2 class="section-title reveal reveal-delay-1">Ce qu'on<br>vous propose</h2>
     </div>
-    <div class="section-count reveal">04</div>
+    <div class="section-count reveal">07</div>
   </div>
-<div class="activities-grid">
+
+  <div class="activities-grid">
     <div class="activity-card reveal">
         <div class="color-bar"></div>
         <div class="activity-bg-num">01</div>
@@ -681,38 +681,77 @@
                 <a href="tarifs-paintball.html" target="_blank" class="activity-link" style="color: var(--cyan-l); font-size: 0.65rem;">Tarifs <span class="activity-link-line" style="background: var(--cyan-l); width: 15px;"></span></a>
             </div>
         </div>
+    </div>
 
-  </div> <div class="activity-card reveal reveal-delay-1">
-    <div class="color-bar"></div>
-    <div class="activity-bg-num">02</div>
-    <div class="activity-icon">🔫</div>
-    <div class="activity-content">
-        <span class="activity-tag">High-Tech</span>
-        <h3 class="activity-name">Lasergame</h3>
-        <p class="activity-desc">Technologie laser immersive. Missions en équipe, sans impact, sans limite d'âge.</p>
-        <div style="display: flex; gap: 1rem; margin-top: auto;">
-            <a href="#contact" class="activity-link" style="font-size: 0.65rem;">Réserver <span class="activity-link-line" style="width: 15px;"></span></a>
-            <a href="tarifs-lasergame.html" target="_blank" class="activity-link" style="color: var(--cyan-l); font-size: 0.65rem;">Tarifs <span class="activity-link-line" style="background: var(--cyan-l); width: 15px;"></span></a>
+    <div class="activity-card reveal reveal-delay-1">
+        <div class="color-bar"></div>
+        <div class="activity-bg-num">02</div>
+        <div class="activity-icon">🔫</div>
+        <div class="activity-content">
+            <span class="activity-tag">High-Tech</span>
+            <h3 class="activity-name">Lasergame</h3>
+            <p class="activity-desc">Technologie laser immersive. Missions en équipe, sans impact, sans limite d'âge.</p>
+            <div style="display: flex; gap: 1rem; margin-top: auto;">
+                <a href="#contact" class="activity-link" style="font-size: 0.65rem;">Réserver <span class="activity-link-line" style="width: 15px;"></span></a>
+                <a href="tarifs-lasergame.html" target="_blank" class="activity-link" style="color: var(--cyan-l); font-size: 0.65rem;">Tarifs <span class="activity-link-line" style="background: var(--cyan-l); width: 15px;"></span></a>
+            </div>
         </div>
     </div>
-</div>
-<div class="activity-card reveal reveal-delay-2">
-    <div class="color-bar"></div>
-    <div class="activity-bg-num">03</div>
-    <div class="activity-icon">💧</div>
-    <div class="activity-content">
-        <span class="activity-tag">Doux & Fun</span>
-        <h3 class="activity-name">Gellyball</h3>
-        <p class="activity-desc">Billes de gel biodégradables, impacts soft. Accessible dès 6 ans. Zéro douleur.</p>
-        <div style="display: flex; gap: 1rem; margin-top: auto;">
-            <a href="#contact" class="activity-link" style="font-size: 0.65rem;">Réserver <span class="activity-link-line" style="width: 15px;"></span></a>
-            <a href="tarifs-gellyball.html" target="_blank" class="activity-link" style="color: var(--cyan-l); font-size: 0.65rem;">Tarifs <span class="activity-link-line" style="background: var(--cyan-l); width: 15px;"></span></a>
+
+    <div class="activity-card reveal reveal-delay-2">
+        <div class="color-bar"></div>
+        <div class="activity-bg-num">03</div>
+        <div class="activity-icon">💧</div>
+        <div class="activity-content">
+            <span class="activity-tag">Doux & Fun</span>
+            <h3 class="activity-name">Gellyball</h3>
+            <p class="activity-desc">Billes de gel biodégradables, impacts soft. Accessible dès 6 ans. Zéro douleur.</p>
+            <div style="display: flex; gap: 1rem; margin-top: auto;">
+                <a href="#contact" class="activity-link" style="font-size: 0.65rem;">Réserver <span class="activity-link-line" style="width: 15px;"></span></a>
+                <a href="tarifs-gellyball.html" target="_blank" class="activity-link" style="color: var(--cyan-l); font-size: 0.65rem;">Tarifs <span class="activity-link-line" style="background: var(--cyan-l); width: 15px;"></span></a>
+            </div>
         </div>
     </div>
-</div>
+
     <div class="activity-card reveal reveal-delay-3">
         <div class="color-bar"></div>
         <div class="activity-bg-num">04</div>
+        <div class="activity-icon">🏹</div>
+        <div class="activity-content">
+            <span class="activity-tag">Archerie</span>
+            <h3 class="activity-name">Archery Tag</h3>
+            <p class="activity-desc">Mélange de tir à l'arc et de balle au prisonnier. Flèches sécurisées à embout mousse.</p>
+            <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
+        </div>
+    </div>
+
+    <div class="activity-card reveal">
+        <div class="color-bar"></div>
+        <div class="activity-bg-num">05</div>
+        <div class="activity-icon">⚽</div>
+        <div class="activity-content">
+            <span class="activity-tag">Sport Fun</span>
+            <h3 class="activity-name">Footbulles</h3>
+            <p class="activity-desc">Du foot dans des bulles géantes. Chocs, rebonds et fous rires garantis sans aucun danger.</p>
+            <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
+        </div>
+    </div>
+
+    <div class="activity-card reveal reveal-delay-1">
+        <div class="color-bar"></div>
+        <div class="activity-bg-num">06</div>
+        <div class="activity-icon">🍙</div>
+        <div class="activity-content">
+            <span class="activity-tag">Insolite</span>
+            <h3 class="activity-name">Combats de Sumo</h3>
+            <p class="activity-desc">Enfilez des costumes géants et poussez votre adversaire hors du tatami. Hilarant !</p>
+            <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
+        </div>
+    </div>
+
+    <div class="activity-card reveal reveal-delay-2">
+        <div class="color-bar"></div>
+        <div class="activity-bg-num">07</div>
         <div class="activity-icon">🏆</div>
         <div class="activity-content">
             <span class="activity-tag">Événement</span>
@@ -721,8 +760,7 @@
             <a href="#contact" class="activity-link">Réserver <span class="activity-link-line"></span></a>
         </div>
     </div>
-</div>
-
+  </div>
 </section>
 
 <section class="occasions" id="occasions">

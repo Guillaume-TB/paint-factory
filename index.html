@@ -325,11 +325,18 @@
     margin-bottom: 2rem;
   }
 
-  .activity-link {
-    display: flex; align-items: center; gap: .6rem;
-    text-decoration: none; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
-    font-weight: 500; transition: gap .2s;
-  }
+.activity-link {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    text-decoration: none;
+    font-size: .85rem; /* Passage de 0.65rem/0.7rem à 0.85rem */
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: gap .2s;
+}
+  
   .activity-card:nth-child(odd) .activity-link { color: var(--pink-l); }
   .activity-card:nth-child(even) .activity-link { color: var(--cyan-l); }
   .activity-link:hover { gap: 1.1rem; }
